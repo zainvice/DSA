@@ -25,7 +25,7 @@ int dynamic_search(int a[], int size, int value){
 }
 int main(){
     int numbers[20]={01,02,25,35,36,37,44,52,53,65,65,66,67,70,71,73,82,85,98};
-    int result=dynamic_search(numbers, 20, 25);
+    int result=dynamic_search(numbers, 20, 85);
     if(result==-1)
         cout<<"Nothing";
     else
