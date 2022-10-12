@@ -29,5 +29,5 @@ int main(){
     if(result==-1)
         cout<<"Nothing";
     else
-        cout<<"Found number at index: "<<result;
+        cout<<"Found number at index: "<<result; 
 }
