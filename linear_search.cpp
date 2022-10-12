@@ -24,7 +24,30 @@ int main(){
         cout<<"Number wasnt found";
     else
         cout<<"Number was found at "<<result+1<<" position";
+     /*if (num % 2 == 0)
+    {
+        for (int i = 0; i < size; i++)
+        {
 
+            *arr[i] = num;
+            num += 8;
+        }
+    }
+    else if (num % 2 != 0)
+    {
+        for (int i = 0; i < size; i++)
+        {
+
+            if (num % 2 == 0) {
+                *arr[i] = num;
+                num += 9;
+            }
+            else if (num % 2 != 0) {
+                *arr[i] = num;
+                num += 8;
+            }
+        }
+    }*/
 
 
 }
