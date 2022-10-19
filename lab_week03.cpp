@@ -1,14 +1,15 @@
+//Binary & Linear Search
 #include<iostream>
 #include <chrono>
 using namespace std::chrono; //Used for measuring time for binary & linear search
 //Note Array size will matter for time taken by binary & linear search
-int size = 5;
-int* arr = new int [5];//Global Variable for Array Storage
+int size = 1000;
+int* arr = new int [1000];//Global Variable for Array Storage
 
 void show_data() {
     //Show data function for the array
     std::cout << "\nArray Content: ";
-    for (int i = 0; i < 5; i++) //Loop for showing values to the user
+    for (int i = 0; i < size; i++) //Loop for showing values to the user
     {
         std::cout << arr[i] << " ";
     }
@@ -17,7 +18,7 @@ void store_data() {
     //Store data function for the array
     char choice; //Giving user to choose to enter number manually or automatically
     std::cout << "\nDo you want to enter array manually or automatically remember array size is " << size << " Yes for automatically Y/N? :"; std::cin >> choice;
-    if (choice == 'Y') {
+    if (choice == 'Y'||choice == 'y') {
         int num;//either odd or even from user choice
         std::cout << "\nDo you want array to be odd or even, enter a number to start from : "; std::cin >> num;
        
