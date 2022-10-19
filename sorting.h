@@ -1,4 +1,5 @@
 #include <iostream>
+
 void bubble_sort(int a[], int s){
    for (int step = 0; step < s; step++)
    {
@@ -34,6 +35,8 @@ void selection_sort(int a[], int size){
         std::swap(a[firstindex], a[i]);
     }
     for (int i = 0; i < size; i++)
+
+
     {
        std::cout<<" "<<a[i];
     }
