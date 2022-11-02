@@ -1,4 +1,4 @@
-//LAB 04
+//LAB 04 //SELECTION SEARCH
 #include <iostream>
 #include <chrono>
 using namespace std::chrono;//Using to calculate time 
@@ -79,7 +79,7 @@ int main(){
                   }
                
                 }            
-            case 3:
+            case 3: //Bubble Sort
              {
                 auto start = high_resolution_clock::now();//Calculating time starting clock
                  for (int step = 0; step < size; step++)//Loop to step into the array
@@ -111,7 +111,7 @@ int main(){
                     return 0;
                 }
         }
-    case 4:
+    case 4: //Selection Sort
         {
         auto start = high_resolution_clock::now();//Starting clock
         for (int i = 0; i < size; i++)//Nested for-loop to step into the array
