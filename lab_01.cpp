@@ -37,3 +37,74 @@ void storingdata() {
  break;
  }
  }
+ else if (sizeofarray == 5) {
+ cout << "Array Size: " << sizeofarray;
+ for (int i = 0; i < sizeofarray; i++)
+ {
+ cout << "\nEnter a value to store " << i + 1 << " value of array: ";
+ cin >> names[i];
+ }
+ }
+}
+void showing_data() {
+ //Displaying Data of Array
+ cout << "Showing data present:";
+ for (int i = 0; i < sizeofarray; i++)
+ {
+ cout << "\n" << i + 1 << ". " << names[i];
+ }
+}
+void resize_array() {
+ //Resizing the array
+
+ string* arrayptr = new string[10]; //used for resizing
+ for (int i = 0; i < 5; i++) {
+ arrayptr[i] = names[i];
+ }
+ names = arrayptr;
+ delete[] arrayptr;
+ sizeofarray = presize + 10;
+ presize = sizeofarray;
+ sizetracker +=5;
+
+ cout << "\t \t \t Size has been increased by 10!";
+}
+int main()
+{
+ //Main Menu
+
+ start:
+ main_menu();//Goes to main menu function
+ switch (choice) //Switch for User Choices
+  {
+ case 1:
+ storingdata();
+ cout << "\n\t \t \t \tIt's done! \n\t\ \t \t \tEnter 0 to go Back: ";
+ cin >> choice;
+ if (choice == 0)
+ goto start;
+ break;
+ case 2:
+ showing_data();
+ cout << "\n\t \t \t \tIt's done! \n\t \t \t \tEnter 0 to go Back: ";
+ cin >> choice;
+ if (choice == 0)
+ goto start;
+ break;
+ case 3:
+ resize_array();
+ cout << "\n\t \t \t \tIt's done! \n\t \t \t \tEnter 0 to go Back: ";
+ cin >> choice;
+ if (choice == 0)
+ goto start;
+ break;
+ case 4:
+ //Exit Case
+ delete[] names;
+
+ cout << "Successful deletion save to exit!";
+ return 0;
+ break;
+ }
+
+}

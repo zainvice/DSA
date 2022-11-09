@@ -6,7 +6,7 @@ using namespace std::chrono;//Using to calculate time
 int main(){
     //Sorting sort;
     int choice;
-    const int size = 2000;//Defining constant size
+    const int size = 10;//Defining constant size
     int* arr = new int [size];//Dynamically allocating array
     start:
      //Main Menu for the user
@@ -89,7 +89,7 @@ int main(){
                            {
                              if(arr[i]>arr[i+1]){//logic to compare two value greater or less
                              int temp= arr[i];//Swapping greater with less
-                             arr[i]=arr[i+1];//An less with greater
+                             arr[i]=arr[i+1];//And less with greater
                              arr[i+1]=temp;
                     
                             }
@@ -117,7 +117,7 @@ int main(){
         for (int i = 0; i < size; i++)//Nested for-loop to step into the array
              {
                 int firstindex= i;  //Storing minimum of the array
-              for (int j = i+1; j < size; j++)
+              for (int j = i+1; j < size-1; j++)
               {
                   if(arr[j]<arr[firstindex])
                     firstindex=j;//Changing minimum depending on logic

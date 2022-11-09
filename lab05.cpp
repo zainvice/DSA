@@ -20,11 +20,11 @@ int main(){
 
     auto start = high_resolution_clock::now();
     for (int i = 1; i < size; i++) {//Loop for itrating through the array to sort
-        int key = arr[i];   //Assigning i value to a key value for comapring
-        int j = i - 1;  //Declaring j value 1 less than i
+        int key = arr[i]; //key=9 i=2 10//Assigning i value to a key value for comapring 
+        int j = i - 1;  //j=1 //Declaring j value 1 less than i
 
         while (key < arr[j] && j >= 0) { //Using AND logic to run while loop for sorting array
-             arr[j + 1] = arr[j]; //Swapping the values
+             arr[j + 1] = arr[j]; // Swapping the values
 
              --j; //Decrementing j value
       
