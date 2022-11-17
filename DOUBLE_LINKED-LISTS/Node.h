@@ -9,10 +9,12 @@ private:
 public:
     Node(){
         next = NULL;
+        previous = NULL;
     };
     Node(int data){
         this->data= data;
 	    next = NULL;
+        previous = NULL;
     };
     //Node(std::string[], int);
     int getData(){

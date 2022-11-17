@@ -33,7 +33,6 @@ public:
 		Node* temp = new Node(data);
         head->setPrevious(temp);
 		temp->setNext(head);
-        temp->setPrevious(NULL);
 		head = temp;
 	    }
     };
@@ -45,11 +44,21 @@ public:
 		Node* temp = new Node(data);
 		tail->setNext(temp);
         temp->setPrevious(tail);
-        temp->setNext(NULL);
 		tail = temp;
 	    }
     };
     void insertAttarget(int data, int loc){
+           Node* temp = new Node(data);
+           Node* target = search(loc);
+           if(target!=NULL){
+                temp->setNext(target->getNext());
+                target->setNext(temp);
+                temp->setPrevious(target);
+           }
+           else{
+                throw "Target not available";
+           }
+
 
     };
     bool isEmpty(){
@@ -60,8 +69,54 @@ public:
 		return false;
 	    }
     };
-    //void remove(int);
-    //Node* search(int);
+    void remove(int data){
+            Node* target= new Node(data);
+            if(target->getData()==head->getData()){
+                   Node* temp= head->getNext();
+                   Node* temp2= head;
+                   head=temp;
+                   temp2->setNext(NULL);
+                  
+
+            }
+            else if(target->getData()==tail->getData()){
+                    Node* temp= tail->getPrevious();
+                    Node* temp2= tail;
+                    tail=temp2;
+                    temp->setNext(NULL);
+                    temp2->setPrevious(NULL);
+                    
+                   
+            }
+            else{
+                    target=search(data);
+                    //if(target!=NULL){
+                        Node* temp= target->getNext();
+                        Node* temp2= target->getPrevious();
+                        temp2->setNext(temp);
+                        temp->setPrevious(temp);
+                        target->setNext(NULL);
+                        target->setPrevious(NULL);
+                        //}
+                    //else{
+                      //  throw "Not found!";
+                   // }
+
+            }
+
+
+    };
+    Node* search(int data){
+        Node* temp= head;
+        while(temp!= NULL){
+            if(data==temp->getData())
+            {
+                return temp;
+            }
+            temp= temp->getNext();
+        }
+        return temp;
+    };
     int count(){
         int counter = 0;
 	    Node* temp = head;
