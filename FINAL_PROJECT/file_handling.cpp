@@ -3,6 +3,7 @@
 #include <ctime>
 #include <random>
 #include <string>
+#include <locale>         
 using namespace std;
 string random_string( size_t length )
 {
@@ -14,11 +15,28 @@ string random_string( size_t length )
     while( str.size() < length ) str += alphabet[ distribution(rng) ] ;
     return str ;
 }
+bool isalpha(std::string alpha){
+    std::locale loc;
+    for (string::iterator it=alpha.begin(); it!=alpha.end(); ++it)
+    {
+         if (std::isalpha(*it, loc))
+                 return true;
+         else
+                 return false;
+     }
+
+
+};
+bool islower(std::string alpha){
+
+
+
+};
 
 int main(){
     ofstream fout;
     ifstream infile;
-    string array[100];
+    string array[1000];
     string line;
     int loop=0;
     int num=122;
@@ -41,13 +59,18 @@ int main(){
     }
 
     fout.close();*/
-    infile.open("input.txt");
+    infile.open("output.txt");
     int size=1;
     if(infile.is_open()){
        while(!infile.eof()){
+           
             getline (infile, line);
-            array[loop]=line;
-            cout<<array[loop]<<"\n";
+            if(isalpha(line)){   
+                array[loop]=line;
+                cout<<array[loop]<<"\n";}
+            else{
+
+            }
             loop++;
             size++;
         }
@@ -68,7 +91,11 @@ int main(){
                              array[firstindex]=temp;//Swapping Max and Min
                              
             }
-    int i=0;
+   
+     /*for (int i = 0; i < size; i++)
+    {
+       if(islower(array[i])||isupper(array[i]));
+    }*/
     cout<<"\nAfter correction: \n";
     for (int i = 0; i < size; i++)
     {
