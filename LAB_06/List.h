@@ -35,6 +35,30 @@ public:
 		head = temp;
 	    }
     };
+    void insertAttarget(int data, int loc){
+           Node* temp = new Node(data);
+           Node* target = search(loc);
+           if(target!=NULL){
+                temp->setNext(target->getNext());
+                target->setNext(temp);
+           }
+           else{
+                throw "Target not available";
+           }
+
+
+    };
+    Node* search(int data){
+        Node* temp= head;
+        while(temp!= NULL){
+            if(data==temp->getData())
+            {
+                return temp;
+            }
+            temp= temp->getNext();
+        }
+        return temp;
+    };
     void insertAttail(int data){
         if (isEmpty()) {
 		insertAthead(data);
@@ -53,8 +77,71 @@ public:
 		return false;
 	    }
     };
-    //void remove();
-    //void search();
+    void remove(int data){
+            Node* target= new Node(data);
+            Node* previous= new Node();
+            
+            if(target->getData()==head->getData()){
+                   Node* temp= head->getNext();
+                   Node* temp2= head;
+                   head=temp;
+                   temp2->setNext(NULL);
+                   delete temp2; 
+
+            }
+            else if(target->getData()==tail->getData()){
+                    Node* temp=head;
+                    while(true){
+                        
+                        if(previous->getNext()==tail){
+                            break;
+                        }
+                        else{
+                            previous=temp->getNext();
+                            temp=temp->getNext();
+                        }
+                    }
+                    Node* temp2= previous;
+                    Node* temp3= tail;
+                    tail=temp2;
+                    temp2->setNext(NULL);
+                    delete temp3;
+                    
+                    
+                   
+            }
+            else{
+                    target=search(data);
+                    Node* temp=head;
+                    
+                    
+                    if(target!=NULL){
+                        while(true){
+                         if(previous->getNext()==target){
+                            break;
+                             }
+                             else{
+                            previous=temp;
+                            temp=temp->getNext();
+                             }
+                       
+                        }
+                        Node* temp2= target->getNext();
+                        Node* temp3= previous;
+                        temp3->setNext(temp2);
+                        target->setNext(NULL);
+                        delete target;
+                    }
+                    else{
+                      //  throw "Not found!";
+                    }
+            }
+
+                    
+
+        
+
+    };
     int count(){
         int counter = 0;
 	    Node* temp = head;
