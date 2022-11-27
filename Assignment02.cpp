@@ -154,14 +154,34 @@ class set
         void inputValue(){
 
         }
-        set Union (const set& , const set&){
+        set Union (const set& setA, const set& setB){
+            /*setElement* temp= setA.firstElement->GetNext();
+            setElement* temp2= setB.firstElement->GetNext();
+            setElement* comp= setA.lastElement;
+            setElement* comp2= setB.lastElement;
+            while(temp!=NULL){
+                if(temp==comp)
+                    break;
+                else
+                  std::cout<<""<< temp;
+                  temp=temp->GetNext();
+                
+            }
+            while(temp2!=NULL){
+                std::cout<<temp2;
+                temp2=temp2->GetNext();
+            }*/
+            setElement* temp= setA.firstElement;
+            temp=setB.firstElement;
+            print();
             
 
         };
         set intersection (const set& , const set&);
         set difference (const set& , const set&);
         set removeDuplication(set& set){
-            setElement* temp= firstElement;
+            //NO NEED FOR THIS LOGIC BUT MIGHT COME IN HANDY
+            /*setElement* temp= firstElement;
             setElement* previous= new setElement();
             setElement* temp2= firstElement->GetNext();
             previous->setNext(firstElement);
@@ -200,9 +220,65 @@ class set
                         }
                     }
                 }
+            }*/
+            setElement* temp= firstElement;
+            int i=0;
+            int array[100];
+            int size=0;
+            while(temp!=NULL){
+                if(temp->ischar()){
+                    temp=temp->GetNext();
+                }
+                else{
+                      array[i]=temp->GetValue();
+                      i++;
+                      size++;
+                      temp=temp->GetNext();
+                }
             }
         };
-        void sortSet();
+    void sortSet(){
+            setElement* temp= firstElement;
+            int i=0;
+            int array[100];
+            int size=0;
+            while(temp!=NULL){
+                if(temp->ischar()){
+                    temp=temp->GetNext();
+                }
+                else{
+                      array[i]=temp->GetValue();
+                      i++;
+                      size++;
+                      temp=temp->GetNext();
+                }
+            }
+            for (int step = 0; step < size; step++){
+                  for (int i = 0; i < size-step; i++)
+                  {
+                      if(array[i]>array[i+1]){
+                         int temp= array[i];
+                          array[i]=array[i+1];
+                          array[i+1]=temp;
+                        //  std::swap(a[i],a[i+1]);
+                      }
+                                       
+                  } 
+                }
+            i=0;
+            temp= firstElement;
+            while(temp!=NULL){
+                if(temp->ischar()){
+                    temp=temp->GetNext();
+                }
+                else{
+                    temp->setValue(array[i]);
+                    i++;
+                    temp=temp->GetNext();
+                }
+               
+            }
+        };
         void print(){
             setElement* temp= firstElement;
             while(temp!=NULL){
@@ -219,9 +295,10 @@ class set
 };
 int main(){
     set setA;
+    set setB;
     int setsize=0;
     int value;
-    std::cout<<"Enter your set size ? ";
+    /*std::cout<<"Enter your set size ? ";
     std::cin>>setsize;
     if(setsize!=0)
         setA.setFirstElement('{');
@@ -235,5 +312,37 @@ int main(){
             setA.setLastElement(',', value);
     }
     setA.setLastElement('}');
+    std::cout<<"Your set A: ";
+    setA.print();
+    std::cout<<"\nEnter your set size ? ";
+    std::cin>>setsize;
+    if(setsize!=0)
+        setB.setFirstElement('{');
+        std::cout<<"Enter values 1 by 1 press enter after each: ";
+    for(int i=0; i<setsize; i++)
+    {
+        std::cin>>value;
+        if(i==0)
+            setB.setLastElement(value);
+        else
+            setB.setLastElement(',', value);
+    }
+    setB.setLastElement('}');
+    std::cout<<"Your set B: ";
+    setB.print();*/
+    set setUnion;
+    setA.setFirstElement(',',3);
+    setA.setFirstElement(5);
+    setA.setFirstElement('{');
+    setA.setLastElement(',',4);
+    setA.setLastElement('}');
+    setB.setFirstElement(',',3);
+    setB.setFirstElement(5);
+    setB.setFirstElement('{');
+    setB.setLastElement(',',4);
+    setB.setLastElement('}');
+    setA.print();
+    std::cout<<"\nSorting set: ";
+    setA.sortSet();
     setA.print();
 }
