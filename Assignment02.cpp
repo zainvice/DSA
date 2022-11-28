@@ -179,7 +179,7 @@ class set
         };
         set intersection (const set& , const set&);
         set difference (const set& , const set&);
-        set removeDuplication(set& set){
+        set removeDuplication(){
             //NO NEED FOR THIS LOGIC BUT MIGHT COME IN HANDY
             /*setElement* temp= firstElement;
             setElement* previous= new setElement();
@@ -236,6 +236,40 @@ class set
                       temp=temp->GetNext();
                 }
             }
+            int target=0;
+            for(int i=0; i<size; i++){
+                if(array[0]==array[i+1]){
+                    target=array[0];
+                    break;
+                }
+                else
+                    i--;
+            }
+           for(i=0; i<size; i++)
+             {
+                 if(array[i]==target)
+                 {
+                     for(int j=i; j<(size-1); j++)
+                        array[j] = array[j+1];
+                        i--;
+                        size--;
+                  }
+            }
+            i=0;
+            temp= firstElement;
+            while(temp!=NULL){
+                if(temp->ischar()){
+                    temp=temp->GetNext();
+                }
+                else{
+                    temp->setValue(array[i]);
+                    i++;
+                    temp=temp->GetNext();
+                }
+               
+            }
+       
+    
         };
     void sortSet(){
             setElement* temp= firstElement;
@@ -298,7 +332,7 @@ int main(){
     set setB;
     int setsize=0;
     int value;
-    /*std::cout<<"Enter your set size ? ";
+    std::cout<<"\nEnter your set size ? ";
     std::cin>>setsize;
     if(setsize!=0)
         setA.setFirstElement('{');
@@ -314,23 +348,10 @@ int main(){
     setA.setLastElement('}');
     std::cout<<"Your set A: ";
     setA.print();
-    std::cout<<"\nEnter your set size ? ";
-    std::cin>>setsize;
-    if(setsize!=0)
-        setB.setFirstElement('{');
-        std::cout<<"Enter values 1 by 1 press enter after each: ";
-    for(int i=0; i<setsize; i++)
-    {
-        std::cin>>value;
-        if(i==0)
-            setB.setLastElement(value);
-        else
-            setB.setLastElement(',', value);
-    }
-    setB.setLastElement('}');
-    std::cout<<"Your set B: ";
-    setB.print();*/
-    set setUnion;
+    setA.sortSet();
+    std::cout<<"\nAfter sorting:  ";
+    setA.print();
+    /*set setUnion;
     setA.setFirstElement(',',3);
     setA.setFirstElement(5);
     setA.setFirstElement('{');
@@ -345,4 +366,7 @@ int main(){
     std::cout<<"\nSorting set: ";
     setA.sortSet();
     setA.print();
+     std::cout<<"\nRemoving Duplication: ";
+    setA.removeDuplication();
+    setA.print();*/
 }
