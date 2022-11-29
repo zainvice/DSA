@@ -140,46 +140,117 @@ class set
                 this->firstElement=temp;
                 this->lastElement=temp;
             }
-            else{
+          else{
                 lastElement->setNext(temp);
                 lastElement=temp;
             }
         }
-        setElement* getFirstElement(){
+    setElement* getFirstElement(){
             return this->firstElement;
         }
-        setElement* getLastElement(){
+    setElement* getLastElement(){
             return this->lastElement;
         }
-        void inputValue(){
+    void inputValue(){
 
         }
-        set Union (const set& setA, const set& setB){
-            /*setElement* temp= setA.firstElement->GetNext();
+    set Union (const set& setA, const set& setB){
+            setElement* temp= setA.firstElement;
             setElement* temp2= setB.firstElement->GetNext();
             setElement* comp= setA.lastElement;
             setElement* comp2= setB.lastElement;
             while(temp!=NULL){
                 if(temp==comp)
                     break;
-                else
-                  std::cout<<""<< temp;
-                  temp=temp->GetNext();
+                else{
+                  if(temp->ischar()) {
+                    std::cout<<" "<< temp->GetSymbol();
+                    temp=temp->GetNext();}
+                  else if (temp->isNum()){
+                    std::cout<<" "<<temp->GetValue();
+                    temp=temp->GetNext();
+                  }
+                  else{
+                    std::cout<<temp->GetSymbol()<<" "<<temp->GetValue();
+                    temp=temp->GetNext();
+                  }
+                  }
                 
             }
             while(temp2!=NULL){
-                std::cout<<temp2;
-                temp2=temp2->GetNext();
-            }*/
-            setElement* temp= setA.firstElement;
-            temp=setB.firstElement;
-            print();
+               if(temp2->ischar()) {
+                    std::cout<<" "<< temp2->GetSymbol();
+                    temp2=temp2->GetNext();}
+                  else if (temp2->isNum()){
+                    std::cout<<", "<<temp2->GetValue();
+                    temp2=temp2->GetNext();
+                  }
+                  else{
+                    std::cout<<temp2->GetSymbol()<<" "<<temp2->GetValue();
+                    temp2=temp2->GetNext();
+
+            }
+            }
             
 
         };
-        set intersection (const set& , const set&);
-        set difference (const set& , const set&);
-        set removeDuplication(){
+    void intersection (const set& setA, const set& setB){
+            setElement* temp= setA.firstElement;
+            setElement* temp2= setB.firstElement;
+            while(temp!=NULL||temp2!=NULL){
+                if(temp->ischar()||temp2->ischar()){
+                    std::cout<<" "<<temp->GetSymbol();
+                    temp=temp->GetNext();
+                    temp2=temp2->GetNext();
+                }
+                else{
+                        if(temp->GetValue()==temp->GetValue()){
+                            if(temp->isNum()){
+                                std::cout<<" "<<temp->GetValue();
+                                temp=temp->GetNext();
+                                temp2=temp2->GetNext();
+                            }
+                            else{
+                                std::cout<<", "<<temp->GetValue();
+                                temp=temp->GetNext();
+                                temp2=temp2->GetNext();
+                            }
+                        }
+                    }
+                
+            }
+            
+    };
+    void difference (const set& setA, const set& setB){
+        setElement* temp= setA.firstElement;
+            setElement* temp2= setB.firstElement;
+            while(temp!=NULL||temp2!=NULL){
+                if(temp->ischar()||temp2->ischar()){
+                    std::cout<<" "<<temp->GetSymbol();
+                    temp=temp->GetNext();
+                    temp2=temp2->GetNext();
+                }
+                else{
+                        if(temp->GetValue()==temp->GetValue()){
+                             temp=temp->GetNext();
+                             temp2=temp2->GetNext();
+                        }
+                        else{
+                            if(temp->isNum()){
+                                std::cout<<" "<<temp->GetValue();
+                                temp=temp->GetNext();
+                                temp2=temp2->GetNext();
+                            }
+                            else{
+                                std::cout<<", "<<temp->GetValue();
+                                temp=temp->GetNext();
+                                temp2=temp2->GetNext();
+                            }
+                            }
+                    }
+            }
+    };
+    set removeDuplication(){
             //NO NEED FOR THIS LOGIC BUT MIGHT COME IN HANDY
             /*setElement* temp= firstElement;
             setElement* previous= new setElement();
@@ -270,12 +341,43 @@ class set
             }
        
     
-        };
+    };
+    int count (){
+        setElement* temp= firstElement;
+        int size;
+        while(temp!=NULL){
+            if(temp->ischar())
+                temp= temp->GetNext();
+            else{
+                 size++;
+                 temp= temp->GetNext();}
+        }
+        return size;
+    };
     void sortSet(){
-            setElement* temp= firstElement;
+          
+            
             int i=0;
-            int array[100];
-            int size=0;
+            int size= count();
+            int* array= new int[size];
+            setElement* temp= firstElement;
+            /*setElement* temper= firstElement->GetNext();
+            int size= count();
+            for (int step = 0; step < size; step++){
+                  for (int i = 0; i < size-step; i++)
+                  {
+                      if(temp->GetValue()>temper->GetValue()){
+                          int temp2= temp->GetValue();
+                          temp->setValue(temper->GetValue());
+                          temper->setValue(temp2);
+                          
+                        //  std::swap(a[i],a[i+1]);
+                      }
+                      temp=temp->GetNext();
+                      temper=temper->GetNext();
+                                       
+                  } 
+                }*/
             while(temp!=NULL){
                 if(temp->ischar()){
                     temp=temp->GetNext();
@@ -283,7 +385,6 @@ class set
                 else{
                       array[i]=temp->GetValue();
                       i++;
-                      size++;
                       temp=temp->GetNext();
                 }
             }
@@ -306,7 +407,10 @@ class set
                     temp=temp->GetNext();
                 }
                 else{
-                    temp->setValue(array[i]);
+                    if(size%=2)
+                        temp->setValue(array[i]);
+                    else
+                        temp->setValue(array[i+1]);
                     i++;
                     temp=temp->GetNext();
                 }
@@ -325,43 +429,141 @@ class set
                 temp=temp->GetNext();
             }
         };
+        void remove(int data){
+            setElement* target= new setElement(data);
+            setElement* previous= new setElement();
+            if(target->GetValue()==firstElement->GetValue()){
+                   setElement* temp= firstElement->GetNext();
+                   setElement* temp2= firstElement;
+                   firstElement=temp;
+                   temp2->setNext(NULL);
+                  
 
-};
+            }
+             else if(target->GetValue()==lastElement->GetValue()){
+                    setElement* temp=firstElement;
+                    while(true){
+                        
+                        if(previous->GetNext()==lastElement){
+                            break;
+                        }
+                        else{
+                            previous=temp->GetNext();
+                            temp=temp->GetNext();
+                        }
+                    }
+                    setElement* temp2= previous;
+                    setElement* temp3= lastElement;
+                    lastElement=temp2;
+                    temp2->setNext(NULL);
+                    delete temp3;
+                    
+                    
+                   
+            }
+            else{
+                    target=search(data);
+                    setElement* temp=firstElement;
+                    
+                    
+                    if(target!=NULL){
+                        while(true){
+                         if(previous->GetNext()==target){
+                            break;
+                             }
+                             else{
+                            previous=temp;
+                            temp=temp->GetNext();
+                             }
+                       
+                        }
+                        setElement* temp2= target->GetNext();
+                        setElement* temp3= previous;
+                        temp3->setNext(temp2);
+                        target->setNext(NULL);
+                        delete target;
+                    }
+                    else{
+                      //  throw "Not found!";
+                    }
+            }
+            };
+
+            setElement* search(int data){
+                setElement* temp= firstElement;
+                 while(temp!= NULL){
+                     if(data==temp->GetValue())
+                     {
+                         return temp;
+                     }
+                     temp= temp->GetNext();
+                  }
+              return temp;
+              };
+    
+    };
+
+ 
 int main(){
     set setA;
     set setB;
     int setsize=0;
     int value;
-    std::cout<<"\nEnter your set size ? ";
+    /*std::cout<<"\nEnter your set size ? ";
     std::cin>>setsize;
     if(setsize!=0)
-        setA.setFirstElement('{');
+        
         std::cout<<"Enter values 1 by 1 press enter after each: ";
-    for(int i=0; i<setsize; i++)
+    */
+   setA.setFirstElement('{');
+   value=40; 
+   for(int i=0; i<5; i++)
     {
-        std::cin>>value;
-        if(i==0)
-            setA.setLastElement(value);
+         //std::cin>>value;
+        if(i==0){
+            setA.setLastElement(value);}
         else
-            setA.setLastElement(',', value);
+            {setA.setLastElement(',', value-5);}
+        value=value-3;
+        
     }
     setA.setLastElement('}');
+    setB.setFirstElement('{');
+    value=40; 
+   for(int i=0; i<8; i++)
+    {
+         //std::cin>>value;
+        if(i==0){
+            setB.setLastElement(value);}
+        else
+            {setB.setLastElement(',', value-5);}
+        value=value-3;
+        
+    }
+    setB.setLastElement('}');
     std::cout<<"Your set A: ";
     setA.print();
+    std::cout<<"\nYour set B: ";
+    setB.print();
     setA.sortSet();
     std::cout<<"\nAfter sorting:  ";
     setA.print();
-    /*set setUnion;
-    setA.setFirstElement(',',3);
-    setA.setFirstElement(5);
-    setA.setFirstElement('{');
-    setA.setLastElement(',',4);
+    setB.sortSet();
+    std::cout<<"\nAfter sorting:  ";
+    setB.print();
+    std::cout<<"\nTaking Union: of Set A and Set B:";
+    setA.Union(setA, setB);
+    //std::cout<<"\nTaking difference: of Set A and Set B:";
+    //setA.difference(setA, setB);
+    std::cout<<"\nTaking Intersection: of Set A and Set B:";
+    setA.intersection(setA, setB);
+    
+    /*setA.setFirstElement('{');
+    setA.setLastElement(50);
+    setA.setLastElement(',',11);
+    setA.setLastElement(',',20);
+    setA.setLastElement(',',40);
     setA.setLastElement('}');
-    setB.setFirstElement(',',3);
-    setB.setFirstElement(5);
-    setB.setFirstElement('{');
-    setB.setLastElement(',',4);
-    setB.setLastElement('}');
     setA.print();
     std::cout<<"\nSorting set: ";
     setA.sortSet();
