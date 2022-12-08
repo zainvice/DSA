@@ -56,9 +56,9 @@ int main(){
         fout<<convert<<"\t "<<convert<<endl;
         num--;
         
-    }
+    }*/
 
-    fout.close();*/
+    fout.close();
     infile.open("output.txt");
     int size=1;
     if(infile.is_open()){
