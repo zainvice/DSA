@@ -1,9 +1,8 @@
 #include <iostream>
 #include "Employee.h"
-
+#include <string>
 int main(){
     Queue queue;
-
     std::string name;
     std::string age;
     std::string position;
@@ -11,9 +10,9 @@ int main(){
     std::cout<<"Enter total Number of Empolyees: ";
     std::cin>>size;
     for(int i=0; i<size; i++){
-        std::string data;
+        std::string data; 
         std::cout<<"Enter Name of the Empolyee "<<i+1<<" !";
-        std::cin>>name;
+       
         std::cout<<"Enter age of the Empolyee!";
         std::cin>>age;
         std::cout<<"Enter position of the Empolyee!";

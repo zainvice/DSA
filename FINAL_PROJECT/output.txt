@@ -1,75 +1,28 @@
-Yauch 
-Zinger
-Wheat
-Van
-Star
-Shark
-Show
-Stop
-Queen
-Moon
-Parrot
-Bubble
-Boom
-Youtube
-Words
-Jeep
-Dog
-Sheep
-Umbrella
-Dance
-Mobile
-Elephant
-Food
-Apple
-Age
-cake
-smoke
-translate
-mistreat
-reason
-survival
-stage
-diameter
-vegetable
-afford
-nature
-printer
-contact
-spray
-necklace
-leaf
-flock
-breeze
-complication
-film
-leash
-castle
-book
-straight
-studio
-rhythm
-miracle
-overeat
-ministrb
-worm 
-harbor
-species
-contradiction
-kettle
-functional
-barrier
-allow
-single
-greet
-vertical
-vegetation
-tooth
-tap
-mechanical
-initiative
-lodge
-hospitality
-latest
-merit
-battery
+Yauch, Zinger Wheat
+Van, Star Shark
+Show, Stop Queen
+Moon, Parrot Bubble
+Boom, Youtube Words
+Jeep, Dog Sheep Umbrella
+Dance, Mobile Elephant Food
+Apple, Age cake smoke
+translate, mistreat reason
+survival, stage diameter
+vegetable, afford nature
+printer, contact spray
+necklace, leaf flock
+breeze, complication film
+leash, castle book
+straight, studio rhythm
+miracle, overeat ministrb
+worm,  harbor species
+contradiction, kettle functional
+barrier, allow single
+greet, vertical vegetation
+tooth, tap echanical
+initiative, lodge hospitality
+latest, merit battery
+
+
+
+

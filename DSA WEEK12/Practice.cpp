@@ -9,7 +9,7 @@ class Solution{
             {
                 return true;
             }
-            else if(s[i+1]=='('&&s[i+2]==')'&&s[i]=='{'&&s[i+1]=='}'&&s[i]=='['&&s[i+1]==']')
+            else if(s[i]=='('&&s[i+1]=='{'&&s[i+2]=='}'&&s[i+3]==')'||s[i]=='{'&&s[i+1]=='('&&s[i+2]==')'&&s[i+3]=='}'||s[i]=='['&&s[i+1]=='('&&s[i+2]==')'&&s[i+3]==']'||s[i]=='['&&s[i+1]=='{'&&s[i+2]=='}'&&s[i+3]==']')
             {
                 return true;
             }
@@ -27,8 +27,8 @@ int main(){
         cout<<"Valid";
     }
     else 
-        cout<<"invalid";
-    cout<<"Go back!"; cin>>s;
+        cout<<"Invalid";
+    cout<<"\nGo back!"; cin>>s;
     if(s=="y")
        goto start;
     else return 0;

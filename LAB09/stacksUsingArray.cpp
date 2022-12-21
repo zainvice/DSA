@@ -1,3 +1,4 @@
+
 #include <iostream>
 //Last In First Out
 class Stack{

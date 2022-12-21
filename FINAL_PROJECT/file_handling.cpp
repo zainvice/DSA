@@ -65,7 +65,9 @@ int main(){
        while(!infile.eof()){
            
             getline (infile, line);
-            if(isalpha(line)){   
+
+            if(isalpha(line)){ 
+              //if ((line>=48 && line<=57)||(line>=65 && line<=90)||(line>=97 && line<=122))
                 array[loop]=line;
                 cout<<array[loop]<<"\n";}
             else{
