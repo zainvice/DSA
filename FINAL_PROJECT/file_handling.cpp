@@ -28,7 +28,14 @@ bool isalpha(std::string alpha){
 
 };
 bool islower(std::string alpha){
-
+    std::locale loc;
+    for (string::iterator it=alpha.begin(); it!=alpha.end(); ++it)
+    {
+         if (std::islower(*it, loc))
+                 return true;
+         else
+                 return false;
+     }
 
 
 };
