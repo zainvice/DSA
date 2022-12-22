@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 //Using global variables for functions
-string* names = new string[5]; //Declaring Array
+string* names = new string[5]; //Declaring Array 
 int choice = 0; //Choice for User
 int sizeofarray = 5; //Easier for loops
 int sizetracker = 0; //tracks previous size of array
@@ -56,11 +56,10 @@ void showing_data() {
 }
 void resize_array() {
  //Resizing the array
-
  string* arrayptr = new string[10]; //used for resizing
  for (int i = 0; i < 5; i++) {
  arrayptr[i] = names[i];
- }
+}
  names = arrayptr;
  delete[] arrayptr;
  sizeofarray = presize + 10;

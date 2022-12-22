@@ -16,5 +16,8 @@ class Stack{
         void pop(){
             list.remove(list.getHead()->getData());
         }
+        void displayStack(){
+            list.print();
+        }
 
 };
